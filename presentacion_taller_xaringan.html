@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Cómo hacer presentaciones asombrosas con {xaringan}</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Semiramis Castro" />
+    <link href="presentacion_taller_xaringan_files/remark-css/default.css" rel="stylesheet" />
+    <link href="presentacion_taller_xaringan_files/remark-css/rladies.css" rel="stylesheet" />
+    <link href="presentacion_taller_xaringan_files/remark-css/rladies-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Cómo hacer presentaciones asombrosas con {xaringan}
+## RLadies Monterrey, México
+### Semiramis Castro
+### 01 agosto 2020
+
+---
+
+
+# Notas importantes antes de empezar
+
+**!!!!** No olviden revisar el **código de conducta**. Este es un ambiente seguro y NO es tolerada ninguna forma de acoso.
+
+https://github.com/rladies/starter-kit/wiki/Code-of-Conduct#spanish
+
+--
+
+El código y todos los materiales estarán disponibles en GitHub: https://github.com/semiramisCJ/taller_xaringan_RLadiesMty2020 
+
+A lo largo de la presentación voy a presentar **una** forma de hacer las cosas; al final de las diapositivas (en los apéndices) están **otras** maneras de hacer lo mismo, así que las puedes checar si tienes curiosidad de experimentar o si quieres probar para elegir qué manera te gusta más usar.
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+
+## ¡Sí!, "sharingan" (xaringan), ¡como en Naruto!
+
+
+Imagen tomada de: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+
+---
+# Antes de empezar necesitamos instalar lo necesario:
+- R (versión 3.6.2 o superior) https://cran.r-project.org/
+
+- Rstudio https://www.rstudio.com/products/rstudio/
+
+- Instalar los paquetes **xaringan** y **pagedown** y sus dependencias
+
+```r
+install.packages(c("pagedown", "xaringan"), dependencies = TRUE)
+```
+
+- Uno o más navegadores (de preferencia Chrome o Chromium si quieres exportar a PDF)
+---
+# Breve guía de RStudio
+Menús
+Páneles
+Viewer
+
+---
+# Ahora, creamos un projecto para nuestras diapositivas
+.pull-left[Opción 1: 
+
+`File -&gt; New File -&gt; RMardown`
+]
+
+.pull-right[ Opción 2:
+
+`New File icon -&gt; RMardown`
+]
+---
+class: inverse, center, middle
+# Paso 1: Ya dentro del proyecto, crear el esqueleto de nuestra presentación
+---
+# Breve introducción a RMarkdown
+
+
+(Más adelante veremos el cómo insertar cosas)
+---
+# Editamos el template genérico de RMarkdown para configurar todo
+
+
+```yaml
+title: "Cómo hacer presentaciones asombrosas con {xaringan}"
+subtitle: RLadies Monterrey, México
+author: "Semiramis Castro"
+date: "01 agosto 2020"
+*output:
+*  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+```
+
+---
+# Elegimos el tema
+Para consultar los temas que hay disponibles pueden visitar: https://github.com/yihui/xaringan/wiki/Themes
+
+O también los pueden enlistar desde R
+
+```r
+names(xaringan:::list_css())
+```
+
+```
+##  [1] "chocolate-fonts"  "chocolate"        "default-fonts"   
+##  [4] "default"          "duke-blue"        "fc-fonts"        
+##  [7] "fc"               "hygge-duke"       "hygge"           
+## [10] "ki-fonts"         "ki"               "kunoichi"        
+## [13] "lucy-fonts"       "lucy"             "metropolis-fonts"
+## [16] "metropolis"       "middlebury-fonts" "middlebury"      
+## [19] "ninjutsu"         "rladies-fonts"    "rladies"         
+## [22] "robot-fonts"      "robot"            "rutgers-fonts"   
+## [25] "rutgers"          "shinobi"          "tamu-fonts"      
+## [28] "tamu"             "uo-fonts"         "uo"              
+## [31] "uol-fonts"        "uol"
+```
+Para saber cómo crear el suyo consulten: `?xaringan::moon_reader`
+---
+# Configuración 
+En este caso, yo uso el tema de RLadies, pero pueden experimentar con los que quieran
+
+```yaml
+title: "Cómo hacer presentaciones asombrosas con {xaringan}"
+subtitle: RLadies Monterrey, México
+author: "Semiramis Castro"
+date: "01 agosto 2020"
+output:
+  xaringan::moon_reader:
+*    css: ["default", "rladies", "rladies-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+```
+
+---
+class: inverse, center, middle
+# Paso 2: Compilamos el archivo .Rmd (knit)
+---
+# Haz click en el botón `Knit`
+Si no hay problemas, nos debe aparecer un mensaje en la consola que diga algo como `Output created: presentacion_taller_xaringan.html`
+
+---
+class: inverse, center, middle
+# Paso 3: Visualizar nuestras diapositivas
+---
+# ¡Veamos qué tal!
+Podemos abrir el archivo HTML con nuestro navegador favorito, o aprovechar nuestra configuración del `Infinite Moon Reader` y ver el progreso en la pestaña `Viewer` de RStudio
+
+[imagen]
+
+
+Nota: Si no puedes ver las diapositivas desde RStudio, intenta con las opciones de los apéndices, y si no, ve a https://github.com/yihui/xaringan/issues/2
+
+---
+class: inverse, center, middle
+# Paso 4: ¡Ahora sí, a editar el RMardown!
+---
+# Texto + Rmarkdown + emojis de fontawesome 
+https://fontawesome.com/
+
+---
+# Cómo poner links
+Vamos a usar de texto de ejemplo:
+Diapositivas creadas con [**xaringan**](https://github.com/yihui/xaringan).
+
+- Podemos simplemente poner el enlace al lado del texto
+
+```r
+Diapositivas creadas con **xaringan** https://github.com/yihui/xaringan
+```
+
+- Sintaxis RMarkdown
+
+```r
+Diapositivas creadas con [**xaringan**](https://github.com/yihui/xaringan).
+```
+
+
+- Estilo HTML
+
+```r
+Diapositivas creadas con 
+&lt;a href="https://github.com/yihui/xaringan"&gt;
+  &lt;i class="fa fa-link fa-fw"&gt;&lt;/i&gt; xaringan&lt;/a&gt;
+```
+
+
+---
+# Cómo insertar código
+- Ctrl + Alt + I 
+
+
+- `Insert -&gt; R` (o el lenguaje que elijan)
+
+
+
+---
+# Cómo poner imágenes (locales)
+Primero que nada, creamos una carpeta dedicada a las imágenes dentro de la carpeta de nuestro proyecto: ¡Hurra por los proyectos! No nos peleamos con las rutas!
+
+---
+# Cómo poner imágenes (de internet)
+
+
+---
+# Cómo dividir a la mitad las diapositivas
+
+
+---
+# Cómo exportar las diapositivas a PDF
+Usamos el paquete **pagedown**, que requiere al navegador Chrome / Chromium instalado
+
+Ponemos cualquiera de los dos comandos de abajo **en la consola**
+
+Opción 1: A partir del archivo Rmd 
+
+```r
+pagedown::chrome_print("presentacion_taller_xaringan.Rmd")
+```
+
+Opción 2: A partir del archivo HTML
+
+```r
+pagedown::chrome_print("presentacion_taller_xaringan.html")
+```
+
+---
+class: inverse, center, middle
+# ¡Y listo!
+## Ya tienes tu primera presentación desde R
+
+---
+## Links útiles (en español)
+- RMarkdown: https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-spanish.pdf
+- Compendio de recursos en español por RLadies CDMX: https://github.com/rladies/recursos_en_espanol
+
+
+## Links útiles (en inglés)
+- RStudio: https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf
+- RMarkdown: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
+- RMarkdown reference: https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+
+---
+class: center, middle
+# Apéndices (otras formas de hacer lo mismo)
+---
+class: inverse, center, middle
+# Paso 1: Ya dentro del proyecto, crear el esqueleto de nuestra presentación
+---
+# Opción 2: A partir del template del autor desde el menú con 
+
+- `File -&gt; New File -&gt; R Markdown -&gt; From Template -&gt; Ninja Presentation`
+
+---
+# Opción 3: Usar como template el archivo de otra persona (archivo .Rmd)
+- Muchas diapositivas están disponibles en GitHub (¡por ejemplo estas diapositivas!) https://github.com/semiramisCJ/taller_xaringan_RLadiesMty2020
+
+- El tutorial de Allison Hill https://alison.rbind.io/post/2017-12-18-r-ladies-presentation-ninja/
+
+- ¡Tus presentaciones anteriores! (cuando las tengas :D )
+
+---
+class: inverse, center, middle
+# Paso 3: Visualizar nuestras diapositivas
+---
+
+# Visualizando desde R
+- Opción 2: Ejecutar el add-on desde la pestaña Tools de RStudio
+
+`Tools -&gt; Addins -&gt; Browse Addins -&gt; xaringan Infinite Moon Reader -&gt; Execute`
+
+
+- Opción 3: Escribir en la consola, teniendo nuestro .Rmd abierto en ese momento
+
+```r
+xaringan::inf_mr()
+```
+---
+class: inverse, center, middle
+Diapositivas creadas con el paquete de R [**xaringan**](https://github.com/yihui/xaringan).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

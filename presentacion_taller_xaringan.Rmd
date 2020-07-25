@@ -1,0 +1,254 @@
+---
+title: "Cómo hacer presentaciones asombrosas con {xaringan}"
+subtitle: RLadies Monterrey, México
+author: "Semiramis Castro"
+date: "01 agosto 2020"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+---
+
+# Notas importantes antes de empezar
+
+**!!!!** No olviden revisar el **código de conducta**. Este es un ambiente seguro y NO es tolerada ninguna forma de acoso.
+
+https://github.com/rladies/starter-kit/wiki/Code-of-Conduct#spanish
+
+--
+
+El código y todos los materiales estarán disponibles en GitHub: https://github.com/semiramisCJ/taller_xaringan_RLadiesMty2020 
+
+A lo largo de la presentación voy a presentar **una** forma de hacer las cosas; al final de las diapositivas (en los apéndices) están **otras** maneras de hacer lo mismo, así que las puedes checar si tienes curiosidad de experimentar o si quieres probar para elegir qué manera te gusta más usar.
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+
+## ¡Sí!, "sharingan" (xaringan), ¡como en Naruto!
+
+
+Imagen tomada de: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+
+---
+# Antes de empezar necesitamos instalar lo necesario:
+- R (versión 3.6.2 o superior) https://cran.r-project.org/
+
+- Rstudio https://www.rstudio.com/products/rstudio/
+
+- Instalar los paquetes **xaringan** y **pagedown** y sus dependencias
+```{r eval=FALSE, tidy=FALSE}
+install.packages(c("pagedown", "xaringan"), dependencies = TRUE)
+```
+
+- Uno o más navegadores (de preferencia Chrome o Chromium si quieres exportar a PDF)
+---
+# Breve guía de RStudio
+Menús
+Páneles
+Viewer
+
+---
+# Ahora, creamos un projecto para nuestras diapositivas
+.pull-left[Opción 1: 
+
+`File -> New File -> RMardown`
+]
+
+.pull-right[ Opción 2:
+
+`New File icon -> RMardown`
+]
+---
+class: inverse, center, middle
+# Paso 1: Ya dentro del proyecto, crear el esqueleto de nuestra presentación
+---
+# Breve introducción a RMarkdown
+
+
+(Más adelante veremos el cómo insertar cosas)
+---
+# Editamos el template genérico de RMarkdown para configurar todo
+
+```{yaml eval=FALSE}
+title: "Cómo hacer presentaciones asombrosas con {xaringan}"
+subtitle: RLadies Monterrey, México
+author: "Semiramis Castro"
+date: "01 agosto 2020"
+*output:
+*  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+```
+
+---
+# Elegimos el tema
+Para consultar los temas que hay disponibles pueden visitar: https://github.com/yihui/xaringan/wiki/Themes
+
+O también los pueden enlistar desde R
+```{r}
+names(xaringan:::list_css())
+```
+Para saber cómo crear el suyo consulten: `?xaringan::moon_reader`
+---
+# Configuración 
+En este caso, yo uso el tema de RLadies, pero pueden experimentar con los que quieran
+```{yaml eval=FALSE}
+title: "Cómo hacer presentaciones asombrosas con {xaringan}"
+subtitle: RLadies Monterrey, México
+author: "Semiramis Castro"
+date: "01 agosto 2020"
+output:
+  xaringan::moon_reader:
+*    css: ["default", "rladies", "rladies-fonts"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+```
+
+---
+class: inverse, center, middle
+# Paso 2: Compilamos el archivo .Rmd (knit)
+---
+# Haz click en el botón `Knit`
+Si no hay problemas, nos debe aparecer un mensaje en la consola que diga algo como `Output created: presentacion_taller_xaringan.html`
+
+---
+class: inverse, center, middle
+# Paso 3: Visualizar nuestras diapositivas
+---
+# ¡Veamos qué tal!
+Podemos abrir el archivo HTML con nuestro navegador favorito, o aprovechar nuestra configuración del `Infinite Moon Reader` y ver el progreso en la pestaña `Viewer` de RStudio
+
+[imagen]
+
+
+Nota: Si no puedes ver las diapositivas desde RStudio, intenta con las opciones de los apéndices, y si no, ve a https://github.com/yihui/xaringan/issues/2
+
+---
+class: inverse, center, middle
+# Paso 4: ¡Ahora sí, a editar el RMardown!
+---
+# Texto + Rmarkdown + emojis de fontawesome 
+https://fontawesome.com/
+
+---
+# Cómo poner links
+Vamos a usar de texto de ejemplo:
+Diapositivas creadas con [**xaringan**](https://github.com/yihui/xaringan).
+
+- Podemos simplemente poner el enlace al lado del texto
+```{r eval=FALSE}
+Diapositivas creadas con **xaringan** https://github.com/yihui/xaringan
+```
+
+- Sintaxis RMarkdown
+```{r eval=FALSE}
+Diapositivas creadas con [**xaringan**](https://github.com/yihui/xaringan).
+```
+
+
+- Estilo HTML
+```{r eval=FALSE}
+Diapositivas creadas con 
+<a href="https://github.com/yihui/xaringan">
+  <i class="fa fa-link fa-fw"></i> xaringan</a>
+```
+
+
+---
+# Cómo insertar código
+- Ctrl + Alt + I 
+
+
+- `Insert -> R` (o el lenguaje que elijan)
+
+
+
+---
+# Cómo poner imágenes (locales)
+Primero que nada, creamos una carpeta dedicada a las imágenes dentro de la carpeta de nuestro proyecto: ¡Hurra por los proyectos! No nos peleamos con las rutas!
+
+---
+# Cómo poner imágenes (de internet)
+
+
+---
+# Cómo dividir a la mitad las diapositivas
+
+
+---
+# Cómo exportar las diapositivas a PDF
+Usamos el paquete **pagedown**, que requiere al navegador Chrome / Chromium instalado
+
+Ponemos cualquiera de los dos comandos de abajo **en la consola**
+
+Opción 1: A partir del archivo Rmd 
+```{r eval=FALSE}
+pagedown::chrome_print("presentacion_taller_xaringan.Rmd")
+```
+
+Opción 2: A partir del archivo HTML
+```{r eval=FALSE}
+pagedown::chrome_print("presentacion_taller_xaringan.html")
+```
+
+---
+class: inverse, center, middle
+# ¡Y listo!
+## Ya tienes tu primera presentación desde R
+
+---
+## Links útiles (en español)
+- RMarkdown: https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-spanish.pdf
+- Compendio de recursos en español por RLadies CDMX: https://github.com/rladies/recursos_en_espanol
+
+
+## Links útiles (en inglés)
+- RStudio: https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf
+- RMarkdown: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
+- RMarkdown reference: https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf
+
+---
+class: center, middle
+# Apéndices (otras formas de hacer lo mismo)
+---
+class: inverse, center, middle
+# Paso 1: Ya dentro del proyecto, crear el esqueleto de nuestra presentación
+---
+# Opción 2: A partir del template del autor desde el menú con 
+
+- `File -> New File -> R Markdown -> From Template -> Ninja Presentation`
+
+---
+# Opción 3: Usar como template el archivo de otra persona (archivo .Rmd)
+- Muchas diapositivas están disponibles en GitHub (¡por ejemplo estas diapositivas!) https://github.com/semiramisCJ/taller_xaringan_RLadiesMty2020
+
+- El tutorial de Allison Hill https://alison.rbind.io/post/2017-12-18-r-ladies-presentation-ninja/
+
+- ¡Tus presentaciones anteriores! (cuando las tengas :D )
+
+---
+class: inverse, center, middle
+# Paso 3: Visualizar nuestras diapositivas
+---
+
+# Visualizando desde R
+- Opción 2: Ejecutar el add-on desde la pestaña Tools de RStudio
+
+`Tools -> Addins -> Browse Addins -> xaringan Infinite Moon Reader -> Execute`
+
+
+- Opción 3: Escribir en la consola, teniendo nuestro .Rmd abierto en ese momento
+```{r eval=FALSE}
+xaringan::inf_mr()
+```
+---
+class: inverse, center, middle
+Diapositivas creadas con el paquete de R [**xaringan**](https://github.com/yihui/xaringan).
