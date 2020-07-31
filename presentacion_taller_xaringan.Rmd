@@ -86,7 +86,7 @@ Y esto es lo que debe aparecer: un archivo Rmd
 ---
 # Editamos el template para configurar nuestra presentación
 
-```{yaml eval=FALSE}
+```{r eval=FALSE}
 title: "Cómo hacer presentaciones asombrosas con {xaringan}"
 subtitle: RLadies Monterrey, México
 author: "Semiramis Castro"
@@ -112,7 +112,7 @@ Para saber cómo crear el suyo consulten: `?xaringan::moon_reader`
 ---
 # Configuración 
 En este caso, yo uso el tema de RLadies, pero pueden experimentar con los que quieran
-```{yaml eval=FALSE}
+```{r eval=FALSE}
 title: "Cómo hacer presentaciones asombrosas con {xaringan}"
 subtitle: RLadies Monterrey, México
 author: "Semiramis Castro"
