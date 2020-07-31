@@ -14,11 +14,8 @@ output:
 
 # Notas importantes antes de empezar
 
-**!!!!** No olviden revisar el **código de conducta**. Este es un ambiente seguro y NO es tolerada ninguna forma de acoso.
+No olviden revisar el **código de conducta**. Este es un ambiente seguro y no se tolera el acoso: https://github.com/rladies/starter-kit/wiki/Code-of-Conduct#spanish
 
-https://github.com/rladies/starter-kit/wiki/Code-of-Conduct#spanish
-
---
 
 El código y todos los materiales estarán disponibles en GitHub: https://github.com/semiramisCJ/taller_xaringan_RLadiesMty2020 
 
@@ -46,31 +43,48 @@ install.packages(c("pagedown", "xaringan"), dependencies = TRUE)
 - Uno o más navegadores (de preferencia Chrome o Chromium si quieres exportar a PDF)
 ---
 # Breve guía de RStudio
-Menús
-Páneles
-Viewer
-
+<img src="images/rstudio_view.png">
 ---
-# Ahora, creamos un projecto para nuestras diapositivas
+# Ahora, creamos un proyecto para nuestras diapositivas
 .pull-left[Opción 1: 
 
-`File -> New File -> RMardown`
+`File -> New Project`
+
+<img src="images/project_op1.png">
+
 ]
 
 .pull-right[ Opción 2:
 
-`New File icon -> RMardown`
+`New Project icon`
+<img src="images/project_op2.png">
+
 ]
 ---
 class: inverse, center, middle
 # Paso 1: Ya dentro del proyecto, crear el esqueleto de nuestra presentación
 ---
-# Breve introducción a RMarkdown
+# Creamos un archivo Rmarkdown
+- Opción 1: `File -> New File -> RMardown`
+- Opción 2: `New File icon -> RMardown`
+
+.pull-left[ Le damos título
+
+<img src="images/markdown_1.png">
+
+]
+
+.pull-right[ 
+Y esto es lo que debe aparecer: un archivo Rmd
 
 
-(Más adelante veremos el cómo insertar cosas)
+<img src="images/markdown_2.png">
+
+]
+
+
 ---
-# Editamos el template genérico de RMarkdown para configurar todo
+# Editamos el template para configurar nuestra presentación
 
 ```{yaml eval=FALSE}
 title: "Cómo hacer presentaciones asombrosas con {xaringan}"
@@ -117,26 +131,51 @@ class: inverse, center, middle
 # Paso 2: Compilamos el archivo .Rmd (knit)
 ---
 # Haz click en el botón `Knit`
-Si no hay problemas, nos debe aparecer un mensaje en la consola que diga algo como `Output created: presentacion_taller_xaringan.html`
+<img src="images/knit.png">
+
+Si todavía no has guardado el archivo, RStudio te va a pedir que lo hagas
+
+A continuación nos debe aparecer un mensaje en la consola que diga algo como `Output created: mi_primera_presentacion.html`
 
 ---
 class: inverse, center, middle
 # Paso 3: Visualizar nuestras diapositivas
 ---
-# ¡Veamos qué tal!
-Podemos abrir el archivo HTML con nuestro navegador favorito, o aprovechar nuestra configuración del `Infinite Moon Reader` y ver el progreso en la pestaña `Viewer` de RStudio
+# ¡Veamos qué tal! 1 / 3
+Podemos abrir el archivo HTML con nuestro navegador favorito, o aprovechar la vista que nos sale al "tejer" nuestro archivo.
 
-[imagen]
+<img src="images/browser.png">
+
+---
+# ¡Veamos qué tal! 2 / 3
+También podemos usar el add-in `Infinite Moon Reader`: Vamos al botón de Addins y seleccionamos el de xaringan
+
+<img src="images/addin.png">
+
+---
+# ¡Veamos qué tal! 3 / 3
+¡Ahora podemos ver el progreso en la pestaña `Viewer` de RStudio!
+
+<img src="images/viewer.png">
 
 
 Nota: Si no puedes ver las diapositivas desde RStudio, intenta con las opciones de los apéndices, y si no, ve a https://github.com/yihui/xaringan/issues/2
 
 ---
 class: inverse, center, middle
-# Paso 4: ¡Ahora sí, a editar el RMardown!
+# Paso 4: ¡Ahora sí, a personalizar el RMardown!
 ---
 # Texto + Rmarkdown + emojis de fontawesome 
 https://fontawesome.com/
+
+```{r eval=FALSE}
+`r icon::fa("laptop-code")`
+```
+
+`r icon::fa("laptop-code")`
+
+<img src="images/fontawesome.png">
+
 
 ---
 # Cómo poner links
@@ -168,20 +207,58 @@ Diapositivas creadas con
 
 
 - `Insert -> R` (o el lenguaje que elijan)
-
-
+<img src="images/insert_chunk.png">
 
 ---
 # Cómo poner imágenes (locales)
-Primero que nada, creamos una carpeta dedicada a las imágenes dentro de la carpeta de nuestro proyecto: ¡Hurra por los proyectos! No nos peleamos con las rutas!
+Primero que nada, creamos una carpeta dedicada a las imágenes dentro de la carpeta de nuestro proyecto
+
+Como estamos en un proyecto, no batallamo con las rutas!
+
+- Estilo Markdown
+```{r eval=FALSE}
+![](carpeta_de_imagenes/mi_imagen.png)
+```
+
+- Estilo HTML
+```{r eval=FALSE}
+<img src="carpeta_de_imagenes/mi_imagen.png">
+```
+
 
 ---
 # Cómo poner imágenes (de internet)
+- Estilo Markdown
+```{r eval=FALSE}
+background-image: url(https://www.site.mi_imagen.png)
+```
 
+- Estilo HTML
 
+```{r eval=FALSE}
+<img src="https://www.site.mi_imagen.png">
+```
 ---
 # Cómo dividir a la mitad las diapositivas
 
+```{r eval=FALSE}
+.pull-left[ 
+Contenido del lado izquierdo
+<img src="images/imagen_izquierda.png">
+]
+
+.pull-right[ 
+Contenido del lado derecho
+<img src="images/imagen_derecha.png">
+]
+
+```
+.pull-left[ 
+<img src="https://media.giphy.com/media/3nbxypT20Ulmo/giphy.gif">
+]
+.pull-right[ 
+<img src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif">
+]
 
 ---
 # Cómo exportar las diapositivas a PDF
@@ -225,6 +302,14 @@ class: inverse, center, middle
 # Opción 2: A partir del template del autor desde el menú con 
 
 - `File -> New File -> R Markdown -> From Template -> Ninja Presentation`
+.pull-left[ 
+
+<img src="images/ninja_1.png">
+]
+.pull-right[ 
+
+<img src="images/ninja_2.png">
+]
 
 ---
 # Opción 3: Usar como template el archivo de otra persona (archivo .Rmd)
@@ -244,6 +329,17 @@ class: inverse, center, middle
 
 `Tools -> Addins -> Browse Addins -> xaringan Infinite Moon Reader -> Execute`
 
+.pull-left[ 
+
+<img src="images/addin_2.png">
+]
+.pull-right[ 
+
+<img src="images/addin_3.png">
+]
+
+---
+# Visualizando desde R
 
 - Opción 3: Escribir en la consola, teniendo nuestro .Rmd abierto en ese momento
 ```{r eval=FALSE}
