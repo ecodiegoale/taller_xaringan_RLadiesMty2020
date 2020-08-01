@@ -1,0 +1,116 @@
+---
+title: "Demo Taller RLadiesMty"
+subtitle: "Presentación hecha con xaringan"
+author: "Semiramis Castro-Jaimes"
+date: "1/8/2020"
+output: 
+    xaringan::moon_reader:
+      css: ["default", "chocolate-fonts", "chocolate"]
+      nature:
+        highlightStyle: github
+        highlighLine: true
+        countIncrementalSlides: true
+---
+class: inverse
+# Mi primera diapositiva
+Esto es texto
+- Esta es una lista
+---
+# Esta es otra diapositiva
+Aquí tenemos código de R
+
+`icon::fa("laptop-code")`
+
+```{r}
+head(mtcars)
+```
+
+
+---
+# Diapositiva con código de otros lenguajes
+
+```{bash eval=TRUE}
+echo "Hola desde Bash"
+```
+
+Podemos ejecutar código de python si tenemos instalada la librería reticulate y R y python se comunican, por ejemplo, usando anaconda o miniconda 
+```{python eval=FALSE}
+def saluda():
+  print("Hola mundo desde RStudio + python")
+  print("Pero no ejecutamos el código")
+  return
+  
+saluda()
+```
+---
+# Una diapositiva con links
+- Simplemente poner el link: https://cran.r-project.org/
+
+- Usar sintaxis de Rmarkdown: [link a CRAN](https://cran.r-project.org/)
+
+<br/><br/><br/>
+
+- Usar sintaxis de HTML
+<a href="https://cran.r-project.org/">
+  Link a CRAN con a href
+</a>
+
+---
+# Imágenes desde la computadora
+
+- Estilo Rmarkdown:
+!['Este es un gatito'](imagenes_presentacion/kitten.jpg)
+
+---
+class: inverse
+# Imagen local con HTML
+Aquí cambiamos fácilmente el tamaño de la imagen especificando el largo y el alto que queremos
+
+<img src="imagenes_presentacion/kitten.jpg" width="550" height="500">
+
+---
+
+background-image: url(https://media.giphy.com/media/K1tgb1IUeBOgw/giphy.gif)
+# Imagen de internet
+Aquí ponemos una imagen de fondo con estilo Rmarkdown
+<br/><br/>
+Esta es otra imagen, pero con estilo HTML
+
+<img src="https://media.giphy.com/media/KLB8IXYVZevYY/giphy.gif" width="200" height="150">
+
+---
+# Esta es una gráfica desde R
+```{r echo=FALSE}
+plot(mtcars$cyl)
+```
+---
+
+# Dividir la diapositiva en dos
+.pull-left[
+<img src="https://media.giphy.com/media/Yt09iFvD9u5AQ/giphy.gif">
+Texto debajo de la imagen
+]
+
+.pull-right[
+Texto a la derecha
+
+]
+
+---
+# Ejemplo de cómo poner una ecuación
+$$S (ω)=1.466\, H_s^2 \,  \frac{ω_0^5}{ω^6 }  \, e^[-3^ { ω/(ω_0  )]^2}$$
+
+---
+# Fin!
+
+```{r eval=FALSE}
+#Convertimos a pdf con
+pagedown::chrome_print("presentacion.html")
+```
+
+
+<img scr="https://media.giphy.com/media/W5D9oEAJvOHaE/giphy.gif">
+
+
+
+
